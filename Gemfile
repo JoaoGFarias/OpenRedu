@@ -92,12 +92,15 @@ group :development, :test do
   gem "rspec-rails", "~> 2.13"
   gem 'debugger'
   gem 'sunspot_solr'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
 end
 
 group :test do
   gem 'shoulda-matchers', "~> 1"
   gem 'webmock'
   gem 'ruby-prof'
+  gem 'cucumber'
 end
 
 group :development do
