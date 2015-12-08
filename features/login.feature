@@ -47,18 +47,7 @@ Feature:
     And   I click on the "Login" button
     Then  I should see the invalid password error message
 
-    @login @sc06 @tobeautomated @semi-manual
-    Scenario: Clean the cookies after login
-    Given I am at the Login page
-    When  I fill the username field with "<username_login>" and the password field with "<password>"
-    And   I click on the "Login" button
-    Then  I should be on the Home page for user "<username>"
-    When  I clean the browser's cookies
-    And   I reload the page
-    Then  I should be on the Login page
-    And   I should see the page access error message
-
-    @login @sc07 @tobeautomated
+    @login @sc06 @tobeautomated
     Scenario: Login via username/password after having logout
     Given I am at the Login page
     When  I fill the username field with "<username1>" and the password field with "<password1>"
@@ -70,7 +59,7 @@ Feature:
     And   I click on the "Login" button
     Then  I should be on the Home page for user "<username>"
 
-    @login @sc08 @tobeautomated
+    @login @sc07 @tobeautomated
     Scenario: Login via username/password after having log in and pressed the backward button
     Given I am at the Login page
     When  I fill the username field with "<username1>" and the password field with "<password1>"
@@ -82,7 +71,7 @@ Feature:
     And   I click on the "Login" button
     Then  I should be on the Home page for user "<username2>"
 
-    @login @sc09 @manual
+    @login @sc08 @manual
     Scenario: Login via username/password after having log in and pressed the backward button
     Given I am at the Login page
     When  I fill the username field with "<username1>" and the password field with "<password1>"
@@ -98,35 +87,35 @@ Feature:
 
   #Unsuccessful login
 
-  @login @sc10 @tobeautomated
+  @login @sc09 @tobeautomated
   Scenario: Faield Login via username/password due invalid password
   Given I am at the Login page
   When  I fill the username field with "<username>" and the password field with "<invalid_password>"
   And   I click on the "Login" button
   Then  I should see the invalid password error message
 
-  @login @sc11 @tobeautomated
+  @login @sc10 @tobeautomated
   Scenario: Faield Login via username/password due invalid username
   Given I am at the Login page
   When  I fill the username field with "<invalid_username>" and the password field with "<password>"
   And   I click on the "Login" button
   Then  I should see the invalid username error message
 
-  @login @sc12 @tobeautomated
+  @login @sc11 @tobeautomated
   Scenario: Faield Login via username/password due invalid username (without @)
   Given I am at the Login page
   When  I fill the username field with "<username_without_at>" and the password field with "<invalid_password>"
   And   I click on the "Login" button
   Then  I should see the invalid username error message
 
-  @login @sc13 @tobeautomated
+  @login @sc12 @tobeautomated
   Scenario: Faield Login via username/password due empty password
   Given I am at the Login page
   When  I fill the username field with "<username>" and the password field with "<empty_password>"
   And   I click on the "Login" button
   Then  I should see the empty password error message
 
-  @login @sc14 @tobeautomated
+  @login @sc13 @tobeautomated
   Scenario: Faield Login via username/password due both empty username and empty password
   Given I am at the Login page
   When  I fill the username field with "<empty_username>" and the password field with "<empty_password>"
@@ -135,7 +124,7 @@ Feature:
 
   #Layout
 
-  @login @sc15 @manual
+  @login @sc14 @manual
   Scenario: Check login layout responsiveness
   Given I am at the Login page
   And   My browser is on fullscreen
