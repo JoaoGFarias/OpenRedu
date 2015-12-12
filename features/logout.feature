@@ -7,7 +7,7 @@ Feature:
   I want to logout the OpenRedu
   So that I can securely end my session
 
-  @logout @sc01 @tobeautomated
+  @logout @sc01 @sanity @tobeautomated
   Scenario: Logout from the system
   Given I am at the Login page
   When  I fill the username field with "<username_login>" and the password field with "<password>"
@@ -16,7 +16,7 @@ Feature:
   When  I logout from the system
   Then  I should be on the Login Page
 
-  @logout @sc02 @tobeautomated @semi-manual
+  @logout @sc02 @sanity @tobeautomated @semi-manual
   Scenario: Clean the cookies after login
   Given I am at the Login page
   When  I fill the username field with "<username_login>" and the password field with "<password>"

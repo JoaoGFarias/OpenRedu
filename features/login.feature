@@ -10,14 +10,14 @@ Feature:
 
   #Sucessful login
     #Login via username and e-mail
-    @login @sc01 @tobeautomated
+    @login @sc01 @sanity @tobeautomated
     Scenario: Login via username/password clicking on the login button
     Given I am at the Login page
     When  I fill the username field with "<username_login>" and the password field with "<password>"
     And   I click on the "Login" button
     Then  I should be on the Home page for user "<username>"
     #
-    @login @sc02 @tobeautomated
+    @login @sc02 @sanity @tobeautomated
     Scenario: Login via email/password clicking on the login button
     Given I am at the Login page
     When  I fill the username field with "<email>" and the password field with "<password>"
@@ -33,7 +33,7 @@ Feature:
 
     #Uppercase on username and password
 
-    @login @sc04 @tobeautomated
+    @login @sc04 @sanity @tobeautomated
     Scenario: Login via username/password with uppercase on username
     Given I am at the Login page
     When  I fill the username field with "<uppercase_username>" and the password field with "<password>"
@@ -47,7 +47,7 @@ Feature:
     And   I click on the "Login" button
     Then  I should see the invalid password error message
 
-    @login @sc06 @tobeautomated
+    @login @sc06 @sanity @tobeautomated
     Scenario: Login via username/password after having logout
     Given I am at the Login page
     When  I fill the username field with "<username1>" and the password field with "<password1>"
@@ -72,7 +72,7 @@ Feature:
     Then  I should be on the Home page for user "<username2>"
 
     @login @sc08 @manual
-    Scenario: Login via username/password after having log in and pressed the backward button
+    Scenario: Login via username/password after having log in and opened another tab
     Given I am at the Login page
     When  I fill the username field with "<username1>" and the password field with "<password1>"
     And   I click on the "Login" button
@@ -87,36 +87,36 @@ Feature:
 
   #Unsuccessful login
 
-  @login @sc09 @tobeautomated
-  Scenario: Faield Login via username/password due invalid password
+  @login @sc09 @sanity @tobeautomated
+  Scenario: Failed Login via username/password due invalid password
   Given I am at the Login page
   When  I fill the username field with "<username>" and the password field with "<invalid_password>"
   And   I click on the "Login" button
   Then  I should see the invalid password error message
 
-  @login @sc10 @tobeautomated
-  Scenario: Faield Login via username/password due invalid username
+  @login @sc10 @sanity @tobeautomated
+  Scenario: Failed Login via username/password due invalid username
   Given I am at the Login page
   When  I fill the username field with "<invalid_username>" and the password field with "<password>"
   And   I click on the "Login" button
   Then  I should see the invalid username error message
 
   @login @sc11 @tobeautomated
-  Scenario: Faield Login via username/password due invalid username (without @)
+  Scenario: Failed Login via username/password due invalid username (without @)
   Given I am at the Login page
   When  I fill the username field with "<username_without_at>" and the password field with "<invalid_password>"
   And   I click on the "Login" button
   Then  I should see the invalid username error message
 
-  @login @sc12 @tobeautomated
-  Scenario: Faield Login via username/password due empty password
+  @login @sc12 @sanity @tobeautomated
+  Scenario: Failed Login via username/password due empty password
   Given I am at the Login page
   When  I fill the username field with "<username>" and the password field with "<empty_password>"
   And   I click on the "Login" button
   Then  I should see the empty password error message
 
-  @login @sc13 @tobeautomated
-  Scenario: Faield Login via username/password due both empty username and empty password
+  @login @sc13 @sanity @tobeautomated
+  Scenario: Failed Login via username/password due both empty username and empty password
   Given I am at the Login page
   When  I fill the username field with "<empty_username>" and the password field with "<empty_password>"
   And   I click on the "Login" button
