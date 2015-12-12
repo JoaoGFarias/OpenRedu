@@ -91,6 +91,7 @@ group :development, :test do
   gem 'sunspot_solr'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
+  gem 'site_prism'
 end
 
 group :test do
