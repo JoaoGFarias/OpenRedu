@@ -10,19 +10,27 @@ Feature:
 
   #Sucessful login
     #Login via username and e-mail
-    @login @sc01 @sanity @tobeautomated
-    Scenario: Login via username/password clicking on the login button
-    Given I am at the Login page
-    When  I fill the username field with "<username_login>" and the password field with "<password>"
-    And   I click on the "Login" button
+    @login @sc01 @sanity @automated
+    Scenario Outline: Login via username/password clicking on the login button
+    Given I am at the "Login" page
+    When  I fill the username field with "<username>" and the password field with "<password>"
+    And   I click on the Submit button
     Then  I should be on the Home page for user "<username>"
-    #
+    Examples:
+    | username        | password     |
+    | administrator   | reduadmin123 |
+    | test_user       | redutest123  |
+
     @login @sc02 @sanity @tobeautomated
-    Scenario: Login via email/password clicking on the login button
-    Given I am at the Login page
+    Scenario Outline: Login via email/password clicking on the login button
+    Given I am at the "Login" page
     When  I fill the username field with "<email>" and the password field with "<password>"
-    And   I click on the "Login" button
+    And   I click on the Submit button
     Then  I should be on the Home page for user "<username>"
+    Examples:
+    | email                 | password     | username       |
+    | redu@redu.com.br      | reduadmin123 | administrator  |
+    | test_user@example.com | redutest123  | test_user      |
 
     @login @sc03 @tobeautomated
     Scenario: Login via email/password clicking on the Enter keyboard button
