@@ -1,2 +1,0 @@
-class PageNotFoundException < Exception
-end
