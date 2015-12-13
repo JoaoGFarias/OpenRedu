@@ -32,32 +32,36 @@ Feature:
     | redu@redu.com.br      | reduadmin123 | administrator  |
     | test_user@example.com | redutest123  | test_user      |
 
-    @login @sc03 @tobeautomated
-    Scenario: Login via email/password clicking on the Enter keyboard button
-    Given I am at the Login page
+    @login @sc03 @automated
+    Scenario Outline: Login via email/password clicking on the Enter keyboard button
+    Given I am at the "Login" page
     When  I fill the username field with "<email>" and the password field with "<password>"
     And   I press on the "Enter" keyboard button
     Then  I should be on the Home page for user "<username>"
+    Examples:
+    | email                 | password     | username       |
+    | redu@redu.com.br      | reduadmin123 | administrator  |
+    | test_user@example.com | redutest123  | test_user      |
 
     #Uppercase on username and password
 
     @login @sc04 @sanity @tobeautomated
     Scenario: Login via username/password with uppercase on username
-    Given I am at the Login page
+    Given I am at the "Login" page
     When  I fill the username field with "<uppercase_username>" and the password field with "<password>"
     And   I click on the "Login" button
     Then  I should be on the Home page for user "<username>"
 
     @login @sc05 @tobeautomated
     Scenario: Login via username/password with uppercase on password
-    Given I am at the Login page
+    Given I am at the "Login" page
     When  I fill the username field with "<username>" and the password field with "<uppercase_password>"
     And   I click on the "Login" button
     Then  I should see the invalid password error message
 
     @login @sc06 @sanity @tobeautomated
     Scenario: Login via username/password after having logout
-    Given I am at the Login page
+    Given I am at the "Login" page
     When  I fill the username field with "<username1>" and the password field with "<password1>"
     And   I click on the "Login" button
     Then  I should be on the Home page for user "<username>"
@@ -69,7 +73,7 @@ Feature:
 
     @login @sc07 @tobeautomated
     Scenario: Login via username/password after having log in and pressed the backward button
-    Given I am at the Login page
+    Given I am at the "Login" page
     When  I fill the username field with "<username1>" and the password field with "<password1>"
     And   I click on the "Login" button
     Then  I should be on the Home page for user "<username1>"
@@ -81,7 +85,7 @@ Feature:
 
     @login @sc08 @manual
     Scenario: Login via username/password after having log in and opened another tab
-    Given I am at the Login page
+    Given I am at the "Login" page
     When  I fill the username field with "<username1>" and the password field with "<password1>"
     And   I click on the "Login" button
     Then  I should be on the Home page for user "<username1>"
@@ -97,35 +101,35 @@ Feature:
 
   @login @sc09 @sanity @tobeautomated
   Scenario: Failed Login via username/password due invalid password
-  Given I am at the Login page
+  Given I am at the "Login" page
   When  I fill the username field with "<username>" and the password field with "<invalid_password>"
   And   I click on the "Login" button
   Then  I should see the invalid password error message
 
   @login @sc10 @sanity @tobeautomated
   Scenario: Failed Login via username/password due invalid username
-  Given I am at the Login page
+  Given I am at the "Login" page
   When  I fill the username field with "<invalid_username>" and the password field with "<password>"
   And   I click on the "Login" button
   Then  I should see the invalid username error message
 
   @login @sc11 @tobeautomated
   Scenario: Failed Login via username/password due invalid username (without @)
-  Given I am at the Login page
+  Given I am at the "Login" page
   When  I fill the username field with "<username_without_at>" and the password field with "<invalid_password>"
   And   I click on the "Login" button
   Then  I should see the invalid username error message
 
   @login @sc12 @sanity @tobeautomated
   Scenario: Failed Login via username/password due empty password
-  Given I am at the Login page
+  Given I am at the "Login" page
   When  I fill the username field with "<username>" and the password field with "<empty_password>"
   And   I click on the "Login" button
   Then  I should see the empty password error message
 
   @login @sc13 @sanity @tobeautomated
   Scenario: Failed Login via username/password due both empty username and empty password
-  Given I am at the Login page
+  Given I am at the "Login" page
   When  I fill the username field with "<empty_username>" and the password field with "<empty_password>"
   And   I click on the "Login" button
   Then  I should see the empty username error message
@@ -134,7 +138,7 @@ Feature:
 
   @login @sc14 @manual
   Scenario: Check login layout responsiveness
-  Given I am at the Login page
+  Given I am at the "Login" page
   And   My browser is on fullscreen
   Then  I verify that the Username and Password fields are aligment
   And   I verify that the Login button is right indented

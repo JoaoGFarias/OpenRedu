@@ -7,6 +7,10 @@ class HeaderNotLogged < SitePrism::Section
   element :button_submit_login, "div.header-sign-in-form-submit input.pull-right"
   element :opened_login_box   , "div.button-group.dropdown.pull-right.open"
 
+  def press_key_element
+    password_login
+  end
+
   def log_with_username(username, password)
 
     if(not is_login_box_opened) then
@@ -15,7 +19,7 @@ class HeaderNotLogged < SitePrism::Section
 
     username_login.set(username)
     password_login.set(password)
-
+    password_login.click
   end
 
   def is_login_box_opened
