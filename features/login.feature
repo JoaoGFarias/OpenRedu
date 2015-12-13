@@ -21,7 +21,7 @@ Feature:
     | administrator   | reduadmin123 |
     | test_user       | redutest123  |
 
-    @login @sc02 @sanity @tobeautomated
+    @login @sc02 @sanity @automated
     Scenario Outline: Login via email/password clicking on the login button
     Given I am at the "Login" page
     When  I fill the username field with "<email>" and the password field with "<password>"
