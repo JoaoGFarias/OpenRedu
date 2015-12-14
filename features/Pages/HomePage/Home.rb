@@ -1,6 +1,9 @@
 class Home < SitePrism::Page
   set_url "/pessoas/{/username}/home"
 
+  #Sections
+  section :header, HeaderLogged, "div.nav-global.nav-global-fixed-top div.nav-global-inner"
+
   #Elements
   element :welcome_message , "span.home-hello-user"
 

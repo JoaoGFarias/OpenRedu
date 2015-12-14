@@ -67,17 +67,20 @@ Feature:
     | administrator | REDUADMIN123        |
     | test_user     | REDUTEST123         |
 
-    @login @sc06 @sanity @tobeautomated
-    Scenario: Login via username/password after having logout
+    @login @sc06 @sanity @automated
+    Scenario Outline: Login via username/password after having logout
     Given I am at the "Login" page
     When  I fill the username field with "<username1>" and the password field with "<password1>"
     And   I click on the Submit button
-    Then  I should be on the Home page for user "<username>"
+    Then  I should be on the Home page for user "<username1>"
     When  I logout from the system
-    Then  I should be on the Login page
+    Then  I should be on the "Login" page
     When  I fill the username field with "<username2>" and the password field with "<password2>"
     And   I click on the Submit button
-    Then  I should be on the Home page for user "<username>"
+    Then  I should be on the Home page for user "<username2>"
+    Examples:
+    | username1       | password1       | username2   | password2   |
+    | administrator   | reduadmin123    | test_user   | redutest123 |
 
     @login @sc07 @tobeautomated
     Scenario: Login via username/password after having log in and pressed the backward button

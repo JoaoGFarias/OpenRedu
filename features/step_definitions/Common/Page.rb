@@ -11,3 +11,10 @@ Then(/^I should be on the Home page for user "(.*?)"$/) do |username|
 
   expect(@page).to be_displayed(username: username)
 end
+
+Then(/^I should be on the "(.*?)" page$/) do |pageName|
+  @page = PagesSupport.get_page(pageName)
+  @page.load()
+
+  expect(@page).to be_displayed()
+end
