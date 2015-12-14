@@ -45,49 +45,57 @@ Feature:
 
     #Uppercase on username and password
 
-    @login @sc04 @sanity @tobeautomated
-    Scenario: Login via username/password with uppercase on username
+    @login @sc04 @sanity @automated
+    Scenario Outline: Login via username/password with uppercase on username
     Given I am at the "Login" page
     When  I fill the username field with "<uppercase_username>" and the password field with "<password>"
-    And   I click on the "Login" button
+    And   I click on the Submit button
     Then  I should be on the Home page for user "<username>"
+    Examples:
+    | uppercase_username  | password     | username       |
+    | ADMINISTRATOR       | reduadmin123 | administrator  |
+    | TEST_USER           | redutest123  | test_user      |
 
-    @login @sc05 @tobeautomated
-    Scenario: Login via username/password with uppercase on password
+    @login @sc05 @automated
+    Scenario Outline: Login via username/password with uppercase on password
     Given I am at the "Login" page
     When  I fill the username field with "<username>" and the password field with "<uppercase_password>"
-    And   I click on the "Login" button
+    And   I click on the Submit button
     Then  I should see the invalid password error message
+    Examples:
+    | username      | uppercase_password  |
+    | administrator | REDUADMIN123        |
+    | test_user     | REDUTEST123         |
 
     @login @sc06 @sanity @tobeautomated
     Scenario: Login via username/password after having logout
     Given I am at the "Login" page
     When  I fill the username field with "<username1>" and the password field with "<password1>"
-    And   I click on the "Login" button
+    And   I click on the Submit button
     Then  I should be on the Home page for user "<username>"
     When  I logout from the system
     Then  I should be on the Login page
     When  I fill the username field with "<username2>" and the password field with "<password2>"
-    And   I click on the "Login" button
+    And   I click on the Submit button
     Then  I should be on the Home page for user "<username>"
 
     @login @sc07 @tobeautomated
     Scenario: Login via username/password after having log in and pressed the backward button
     Given I am at the "Login" page
     When  I fill the username field with "<username1>" and the password field with "<password1>"
-    And   I click on the "Login" button
+    And   I click on the Submit button
     Then  I should be on the Home page for user "<username1>"
     When  I press on the "Backward" browser button
     Then  I am at the Login page
     When  I fill the username field with "<username2>" and the password field with "<password2>"
-    And   I click on the "Login" button
+    And   I click on the Submit button
     Then  I should be on the Home page for user "<username2>"
 
     @login @sc08 @manual
     Scenario: Login via username/password after having log in and opened another tab
     Given I am at the "Login" page
     When  I fill the username field with "<username1>" and the password field with "<password1>"
-    And   I click on the "Login" button
+    And   I click on the Submit button
     Then  I should be on the Home page for user "<username1>"
     When  I open a new tab on the browser
     Then  I should be on the Home page for user "<username1>"
@@ -103,35 +111,35 @@ Feature:
   Scenario: Failed Login via username/password due invalid password
   Given I am at the "Login" page
   When  I fill the username field with "<username>" and the password field with "<invalid_password>"
-  And   I click on the "Login" button
+  And   I click on the Submit button
   Then  I should see the invalid password error message
 
   @login @sc10 @sanity @tobeautomated
   Scenario: Failed Login via username/password due invalid username
   Given I am at the "Login" page
   When  I fill the username field with "<invalid_username>" and the password field with "<password>"
-  And   I click on the "Login" button
+  And   I click on the Submit button
   Then  I should see the invalid username error message
 
   @login @sc11 @tobeautomated
   Scenario: Failed Login via username/password due invalid username (without @)
   Given I am at the "Login" page
   When  I fill the username field with "<username_without_at>" and the password field with "<invalid_password>"
-  And   I click on the "Login" button
+  And   I click on the Submit button
   Then  I should see the invalid username error message
 
   @login @sc12 @sanity @tobeautomated
   Scenario: Failed Login via username/password due empty password
   Given I am at the "Login" page
   When  I fill the username field with "<username>" and the password field with "<empty_password>"
-  And   I click on the "Login" button
+  And   I click on the Submit button
   Then  I should see the empty password error message
 
   @login @sc13 @sanity @tobeautomated
   Scenario: Failed Login via username/password due both empty username and empty password
   Given I am at the "Login" page
   When  I fill the username field with "<empty_username>" and the password field with "<empty_password>"
-  And   I click on the "Login" button
+  And   I click on the Submit button
   Then  I should see the empty username error message
 
   #Layout
