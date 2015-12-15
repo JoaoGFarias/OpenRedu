@@ -110,12 +110,16 @@ Feature:
 
   #Unsuccessful login
 
-  @login @sc09 @sanity @tobeautomated
-  Scenario: Failed Login via username/password due invalid password
+  @login @sc09 @sanity @automated
+  Scenario Outline: Failed Login via username/password due invalid password
   Given I am at the "Login" page
   When  I fill the username field with "<username>" and the password field with "<invalid_password>"
   And   I click on the Submit button
   Then  I should see the invalid password error message
+  Examples:
+  | username        | password          |
+  | administrator   | invalid_password  |
+  | test_user       | invalid_password  |
 
   @login @sc10 @sanity @tobeautomated
   Scenario: Failed Login via username/password due invalid username
