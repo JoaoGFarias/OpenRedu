@@ -33,6 +33,11 @@ class HeaderNotLogged < SitePrism::Section
     invalid_password_message.visible?
   end
 
+  def empty_password_display?
+    is_diplayed = self.invalid_password_display?
+    is_diplayed && CheckI18nMessage.equal?("invalid_password", I18n.locale, invalid_password_message.text)
+  end
+
   def invalid_username_display?
     wait_until_invalid_username_message_visible(2)
     invalid_username_message.visible?

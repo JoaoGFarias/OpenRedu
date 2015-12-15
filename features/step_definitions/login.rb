@@ -15,6 +15,10 @@ Then(/^I should see the invalid password error message$/) do
   @page.header.invalid_password_display?.should be_true
 end
 
+Then(/^I should see the empty password error message$/) do
+  @page.header.empty_password_display?.should be_true
+end
+
 Then(/^I should see the invalid username error message$/) do
   @page.header.invalid_username_display?.should be_true
 end

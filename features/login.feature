@@ -139,12 +139,16 @@ Feature:
   And   I click on the Submit button
   Then  I should see the invalid username error message
 
-  @login @sc12 @sanity @tobeautomated
-  Scenario: Failed Login via username/password due empty password
+  @login @sc12 @sanity @automated
+  Scenario Outline: Failed Login via username/password due empty password
   Given I am at the "Login" page
   When  I fill the username field with "<username>" and the password field with "<empty_password>"
   And   I click on the Submit button
   Then  I should see the empty password error message
+  Examples:
+  | username        | password  |
+  | administrator   |           |
+  | test_user       |           |
 
   @login @sc13 @sanity @tobeautomated
   Scenario: Failed Login via username/password due both empty username and empty password
