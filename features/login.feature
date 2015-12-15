@@ -121,12 +121,16 @@ Feature:
   | administrator   | invalid_password  |
   | test_user       | invalid_password  |
 
-  @login @sc10 @sanity @tobeautomated
-  Scenario: Failed Login via username/password due invalid username
+  @login @sc10 @sanity @automated
+  Scenario Outline: Failed Login via username/password due invalid username
   Given I am at the "Login" page
   When  I fill the username field with "<invalid_username>" and the password field with "<password>"
   And   I click on the Submit button
   Then  I should see the invalid username error message
+  Examples:
+  | invalid_username  | password     |
+  | no_the_admin      | reduadmin123 |
+  | no_the_test_user  | redutest123  |
 
   @login @sc11 @tobeautomated
   Scenario: Failed Login via username/password due invalid username (without @)

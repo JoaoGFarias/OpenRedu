@@ -7,6 +7,7 @@ class HeaderNotLogged < SitePrism::Section
   element :button_submit_login      , "div.header-sign-in-form-submit input.pull-right"
   element :opened_login_box         , "div.button-group.dropdown.pull-right.open"
   element :invalid_password_message , "form#form-sign-in div:nth-child(3) ul.errors_on_field"
+  element :invalid_username_message , "form#form-sign-in div:nth-child(2) ul.errors_on_field"
 
   def press_key_element
     password_login
@@ -30,6 +31,11 @@ class HeaderNotLogged < SitePrism::Section
   def invalid_password_display?
     wait_until_invalid_password_message_visible(2)
     invalid_password_message.visible?
+  end
+
+  def invalid_username_display?
+    wait_until_invalid_username_message_visible(2)
+    invalid_username_message.visible?
   end
 
 end
