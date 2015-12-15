@@ -4,6 +4,6 @@ Then /^I should have received a password redefinition request via the "(.*?)" em
 end
 
 When /^I fill the email field with "(.*?)"$/ do |email|
-  @page.fillEmailField(email)
-  @page.submitEmail
+  @page = @page.fillEmailField(email)
+               .submitEmail
 end

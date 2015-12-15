@@ -12,6 +12,7 @@ class HeaderLogged < SitePrism::Section
     end
 
     logout_button.click
+    self
   end
 
   def user_dropdown_opened?

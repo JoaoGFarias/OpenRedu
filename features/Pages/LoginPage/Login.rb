@@ -14,6 +14,7 @@ class Login < SitePrism::Page
   def load
     super()
     self.wait_load
+    self
   end
 
   def wait_load
@@ -22,4 +23,33 @@ class Login < SitePrism::Page
     end
   end
 
+  def open_sign_in
+    header.open_sign_in
+    self
+  end
+
+  def submit_login
+    header.submit_login
+    self
+  end
+
+  def invalid_password_display?
+    header.invalid_password_display?
+  end
+
+  def empty_password_display?
+    header.empty_password_display?
+  end
+
+  def invalid_username_display?
+    header.invalid_username_display?
+  end
+
+  def empty_username_display?
+    header.empty_username_display?
+  end
+
+  def log_with_username(username, password)
+    header.log_with_username(username, password)
+  end
 end

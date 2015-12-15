@@ -1,5 +1,5 @@
 When(/^I logout from the system$/) do
-  @page.header.logout
+  @page = @page.logout
 end
 
 When(/^I clean the browser's cookies$/) do

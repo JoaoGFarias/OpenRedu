@@ -4,9 +4,11 @@ class RetrievePassword < SitePrism::Page
   #Elements
   element :email_input  , "input#recovery_email_email"
   element :submit_button, "input.concave-button"
+
   def load
     super()
     self.wait_load
+    self
   end
 
   def wait_load
@@ -17,10 +19,12 @@ class RetrievePassword < SitePrism::Page
 
   def fillEmailField(email)
     email_input.set(email)
+    self
   end
 
   def submitEmail
     submit_button.click
+    self
   end
 
 end

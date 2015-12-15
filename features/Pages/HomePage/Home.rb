@@ -10,12 +10,18 @@ class Home < SitePrism::Page
   def load(username)
     self.wait_load
     super(username: username[:username])
+    self
   end
 
   def wait_load
     HoldOn.until(timeout: 30, interval: 0.5, message: "The Home Page did not load after 30 seconds") do
       has_welcome_message? && welcome_message.visible?
     end
+  end
+
+  def logout
+    header = self.header.logout
+    self
   end
 
 end

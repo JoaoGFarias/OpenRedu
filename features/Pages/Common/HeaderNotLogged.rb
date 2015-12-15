@@ -13,6 +13,16 @@ class HeaderNotLogged < SitePrism::Section
     password_login
   end
 
+  def open_sign_in
+    button_sign_in.click
+    self
+  end
+
+  def submit_login
+    button_submit_login.click
+    self
+  end
+
   def log_with_username(username, password)
 
     if(not login_box_opened?) then
@@ -22,6 +32,7 @@ class HeaderNotLogged < SitePrism::Section
     username_login.set(username)
     password_login.set(password)
     password_login.click
+    self
   end
 
   def login_box_opened?
