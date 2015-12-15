@@ -29,18 +29,31 @@ class HeaderNotLogged < SitePrism::Section
   end
 
   def invalid_password_display?
-    wait_until_invalid_password_message_visible(2)
+    begin
+      wait_until_invalid_password_message_visible(2)
+    rescue SitePrism::TimeOutWaitingForElementVisibility
+      return false
+    end
     invalid_password_message.visible?
   end
 
   def empty_password_display?
-    is_diplayed = self.invalid_password_display?
-    is_diplayed && CheckI18nMessage.equal?("invalid_password", I18n.locale, invalid_password_message.text)
+    self.invalid_password_display? &&
+    CheckI18nMessage.equal?("invalid_password", I18n.locale, invalid_password_message.text)
   end
 
   def invalid_username_display?
-    wait_until_invalid_username_message_visible(2)
+    begin
+      wait_until_invalid_username_message_visible(2)
+    rescue SitePrism::TimeOutWaitingForElementVisibility
+      return false
+    end
     invalid_username_message.visible?
+  end
+
+  def empty_username_display?
+    self.invalid_username_display? &&
+    CheckI18nMessage.equal?("invalid_username", I18n.locale, invalid_username_message.text)
   end
 
 end

@@ -150,12 +150,17 @@ Feature:
   | administrator   |           |
   | test_user       |           |
 
-  @login @sc13 @sanity @tobeautomated
-  Scenario: Failed Login via username/password due both empty username and empty password
+  #Bug: #39 (https://github.com/OpenRedu/OpenRedu/issues/39)
+  @login @sc13 @sanity @automated
+  Scenario Outline: Failed Login via username/password due both empty username and empty password
   Given I am at the "Login" page
   When  I fill the username field with "<empty_username>" and the password field with "<empty_password>"
   And   I click on the Submit button
   Then  I should see the empty username error message
+  Examples:
+  | empty_username   | empty_password   |
+  |                  |                  |
+  |                  |                  |
 
   #Layout
 

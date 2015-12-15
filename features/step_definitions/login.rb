@@ -22,3 +22,7 @@ end
 Then(/^I should see the invalid username error message$/) do
   @page.header.invalid_username_display?.should be_true
 end
+
+Then(/^I should see the empty username error message$/) do
+  @page.header.empty_username_display?.should be_true
+end
