@@ -1,8 +1,15 @@
 class PagesSupport
 
   def self.get_page(page_name)
+
+    pages_names ={
+                "Login" => "Login", "login" => "Login",
+                "Home" => "Home", "home" => "Home",
+                "Retrieve Password" => "RetrievePassword", "Retrieve_Password" => "RetrievePassword"
+              }
+
     begin
-      return page_name.constantize.new
+      return pages_names[page_name].constantize.new
     rescue NameError
       raise PageNotFoundEroor, "There is no page named #{page_name}."
     end
