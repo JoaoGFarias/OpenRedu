@@ -3,7 +3,7 @@ Feature:
   I want to re-define my forgotten password
   So that I can use the OpenRedu even when I forgot my password
 
-  @forgotten_password @sc01 @sanity @automated @semi-manual
+  @forgotten_password @sc01 @sanity @clean @tobeautomated @semi-manual
   Scenario Outline: Send request for password redefinition
   Given I am at the "Retrieve Password" page
   When  I fill the email field with "<email>"
