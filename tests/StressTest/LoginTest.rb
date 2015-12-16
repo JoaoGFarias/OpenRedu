@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'ruby-jmeter'
 
+#Este teste tenta logar varios usuarios de uma vez so, note que neste teste eh utilizado apenas um unico usuario (miguel), num teste real o ideal seria criar multiplos usuarios, armazenar num CSV e utiliza-lo para fazer o teste.
+
 #URL do servidor, com porta
 url = 'http://localhost:3000',
 #Login do usuário
